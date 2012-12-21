@@ -13,7 +13,7 @@
 Summary:	Shared code for mate-panel, mate-session, mate-file-manager, etc
 Name:		mate-desktop
 Version:	1.5.5
-Release:	0.3
+Release:	0.4
 URL:		http://mate-desktop.org
 Source0:	http://pub.mate-desktop.org/releases/1.5/%{name}-%{version}.tar.xz
 # Source0-md5:	683a8c3efcb5270cd215d9c856b0ced6
@@ -114,6 +114,7 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_bindir}/mate-about
 %{_sysconfdir}/xdg/autostart/user-dirs-update-mate.desktop
 %{_desktopdir}/mate-about.desktop
+# XXX %lang
 %{_datadir}/mate/help/*/*/*.xml
 %{_datadir}/omf/mate-desktop/
 %{_datadir}/mate-about/
@@ -126,55 +127,56 @@ rm -rf $RPM_BUILD_ROOT
 %dir %{_datadir}/mate/help/gpl
 %dir %{_datadir}/mate/help/lgpl
 %dir %{_datadir}/mate/help/fdl/C
-%lang(ar) %dir %{_datadir}/mate/help/fdl/ar
-%lang(ca) %dir %{_datadir}/mate/help/fdl/ca
-%lang(de) %dir %{_datadir}/mate/help/fdl/de
-%lang(el) %dir %{_datadir}/mate/help/fdl/el
-%lang(es) %dir %{_datadir}/mate/help/fdl/es
-%lang(eu) %dir %{_datadir}/mate/help/fdl/eu
-%lang(fr) %dir %{_datadir}/mate/help/fdl/fr
-%lang(hu) %dir %{_datadir}/mate/help/fdl/hu
-%lang(ko) %dir %{_datadir}/mate/help/fdl/ko
-%lang(oc) %dir %{_datadir}/mate/help/fdl/oc
-%lang(pl) %dir %{_datadir}/mate/help/fdl/pl
-%lang(sv) %dir %{_datadir}/mate/help/fdl/sv
-%lang(uk) %dir %{_datadir}/mate/help/fdl/uk
-%lang(vi) %dir %{_datadir}/mate/help/fdl/vi
+# XXX %lang
+%dir %{_datadir}/mate/help/fdl/ar
+%dir %{_datadir}/mate/help/fdl/ca
+%dir %{_datadir}/mate/help/fdl/de
+%dir %{_datadir}/mate/help/fdl/el
+%dir %{_datadir}/mate/help/fdl/es
+%dir %{_datadir}/mate/help/fdl/eu
+%dir %{_datadir}/mate/help/fdl/fr
+%dir %{_datadir}/mate/help/fdl/hu
+%dir %{_datadir}/mate/help/fdl/ko
+%dir %{_datadir}/mate/help/fdl/oc
+%dir %{_datadir}/mate/help/fdl/pl
+%dir %{_datadir}/mate/help/fdl/sv
+%dir %{_datadir}/mate/help/fdl/uk
+%dir %{_datadir}/mate/help/fdl/vi
 %dir %{_datadir}/mate/help/gpl/C
-%lang(ar) %dir %{_datadir}/mate/help/gpl/ar
-%lang(ca) %dir %{_datadir}/mate/help/gpl/ca
-%lang(cs) %dir %{_datadir}/mate/help/gpl/cs
-%lang(de) %dir %{_datadir}/mate/help/gpl/de
-%lang(el) %dir %{_datadir}/mate/help/gpl/el
-%lang(es) %dir %{_datadir}/mate/help/gpl/es
-%lang(eu) %dir %{_datadir}/mate/help/gpl/eu
-%lang(fi) %dir %{_datadir}/mate/help/gpl/fi
-%lang(fr) %dir %{_datadir}/mate/help/gpl/fr
-%lang(hu) %dir %{_datadir}/mate/help/gpl/hu
-%lang(ko) %dir %{_datadir}/mate/help/gpl/ko
-%lang(nds) %dir %{_datadir}/mate/help/gpl/nds
-%lang(oc) %dir %{_datadir}/mate/help/gpl/oc
-%lang(pa) %dir %{_datadir}/mate/help/gpl/pa
-%lang(sv) %dir %{_datadir}/mate/help/gpl/sv
-%lang(uk) %dir %{_datadir}/mate/help/gpl/uk
-%lang(vi) %dir %{_datadir}/mate/help/gpl/vi
-%lang(zh_CN) %dir %{_datadir}/mate/help/gpl/zh_CN
+%dir %{_datadir}/mate/help/gpl/ar
+%dir %{_datadir}/mate/help/gpl/ca
+%dir %{_datadir}/mate/help/gpl/cs
+%dir %{_datadir}/mate/help/gpl/de
+%dir %{_datadir}/mate/help/gpl/el
+%dir %{_datadir}/mate/help/gpl/es
+%dir %{_datadir}/mate/help/gpl/eu
+%dir %{_datadir}/mate/help/gpl/fi
+%dir %{_datadir}/mate/help/gpl/fr
+%dir %{_datadir}/mate/help/gpl/hu
+%dir %{_datadir}/mate/help/gpl/ko
+%dir %{_datadir}/mate/help/gpl/nds
+%dir %{_datadir}/mate/help/gpl/oc
+%dir %{_datadir}/mate/help/gpl/pa
+%dir %{_datadir}/mate/help/gpl/sv
+%dir %{_datadir}/mate/help/gpl/uk
+%dir %{_datadir}/mate/help/gpl/vi
+%dir %{_datadir}/mate/help/gpl/zh_CN
 %dir %{_datadir}/mate/help/lgpl/C
-%lang(ar) %dir %{_datadir}/mate/help/lgpl/ar
-%lang(de) %dir %{_datadir}/mate/help/lgpl/de
-%lang(el) %dir %{_datadir}/mate/help/lgpl/el
-%lang(es) %dir %{_datadir}/mate/help/lgpl/es
-%lang(eu) %dir %{_datadir}/mate/help/lgpl/eu
-%lang(fi) %dir %{_datadir}/mate/help/lgpl/fi
-%lang(fr) %dir %{_datadir}/mate/help/lgpl/fr
-%lang(hu) %dir %{_datadir}/mate/help/lgpl/hu
-%lang(ko) %dir %{_datadir}/mate/help/lgpl/ko
-%lang(oc) %dir %{_datadir}/mate/help/lgpl/oc
-%lang(pa) %dir %{_datadir}/mate/help/lgpl/pa
-%lang(sv) %dir %{_datadir}/mate/help/lgpl/sv
-%lang(uk) %dir %{_datadir}/mate/help/lgpl/uk
-%lang(vi) %dir %{_datadir}/mate/help/lgpl/vi
-%lang(zh_CN) %dir %{_datadir}/mate/help/lgpl/zh_CN
+%dir %{_datadir}/mate/help/lgpl/ar
+%dir %{_datadir}/mate/help/lgpl/de
+%dir %{_datadir}/mate/help/lgpl/el
+%dir %{_datadir}/mate/help/lgpl/es
+%dir %{_datadir}/mate/help/lgpl/eu
+%dir %{_datadir}/mate/help/lgpl/fi
+%dir %{_datadir}/mate/help/lgpl/fr
+%dir %{_datadir}/mate/help/lgpl/hu
+%dir %{_datadir}/mate/help/lgpl/ko
+%dir %{_datadir}/mate/help/lgpl/oc
+%dir %{_datadir}/mate/help/lgpl/pa
+%dir %{_datadir}/mate/help/lgpl/sv
+%dir %{_datadir}/mate/help/lgpl/uk
+%dir %{_datadir}/mate/help/lgpl/vi
+%dir %{_datadir}/mate/help/lgpl/zh_CN
 
 %files libs
 %defattr(644,root,root,755)
