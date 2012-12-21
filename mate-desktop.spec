@@ -6,6 +6,7 @@
 #error: removing mate-desktop-libs-1.5.5-0.3.i686 "Requires: mate-desktop = 1.5.5-0.3" from tsort relations.
 #error:     mate-desktop-libs-1.5.5-0.3.i686         Requires: mate-desktop = 1.5.5-0.3
 # - fix gtk-doc building (probably missing some dtd's)
+# - devel: /usr/share/gtk-doc/html is needed by mate-desktop-devel-1.5.5-0.4.i686
 
 # Conditional build:
 %bcond_with	doc	# gtk doc. broken
@@ -185,7 +186,7 @@ rm -rf $RPM_BUILD_ROOT
 
 %files devel
 %defattr(644,root,root,755)
-%doc %{_datadir}/gtk-doc/html/mate-desktop
+#%doc %{_datadir}/gtk-doc/html/mate-desktop
 %{_libdir}/libmate-desktop-2.so
 %{_pkgconfigdir}/mate-desktop-2.0.pc
 %{_includedir}/mate-desktop-2.0
