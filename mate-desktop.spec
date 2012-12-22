@@ -9,18 +9,18 @@
 # - devel: /usr/share/gtk-doc/html is needed by mate-desktop-devel-1.5.5-0.4.i686
 
 # Conditional build:
-%bcond_with	doc	# gtk doc. broken
+%bcond_without	apidocs		# disable gtk-doc
 
 Summary:	Shared code for mate-panel, mate-session, mate-file-manager, etc
 Name:		mate-desktop
 Version:	1.5.5
-Release:	0.4
-URL:		http://mate-desktop.org
+Release:	0.6
 Source0:	http://pub.mate-desktop.org/releases/1.5/%{name}-%{version}.tar.xz
 # Source0-md5:	683a8c3efcb5270cd215d9c856b0ced6
 Source1:	user-dirs-update-mate.desktop
 License:	GPLv2+ and LGPLv2+ and MIT
 Group:		X11/Applications
+URL:		http://mate-desktop.org/
 BuildRequires:	desktop-file-utils
 BuildRequires:	mate-common
 BuildRequires:	pkgconfig(gsettings-desktop-schemas)
@@ -60,11 +60,23 @@ Requires:	%{name}-libs = %{version}-%{release}
 Libraries and header files for the MATE-internal private library
 libmatedesktop.
 
+%package apidocs
+Summary:	mate-desktop API documentation
+Summary(pl.UTF-8):	Dokumentacja API mate-desktop
+Group:		Documentation
+Requires:	gtk-doc-common
+
+%description apidocs
+mate-desktop API documentation.
+
+%description apidocs -l pl.UTF-8
+Dokumentacja API mate-desktop.
+
 %prep
 %setup -q
-NOCONFIGURE=1 ./autogen.sh
 
 %build
+NOCONFIGURE=1 ./autogen.sh
 %configure \
 	--enable-gnucat \
 	--disable-scrollkeeper \
@@ -72,7 +84,7 @@ NOCONFIGURE=1 ./autogen.sh
 	--disable-schemas-compile \
 	--with-pnp-ids-path="%{_datadir}/hwdata/pnp.ids" \
 	--enable-unique \
-	%{?with_doc:--enable-gtk-doc} \
+	%{?with_apidocs:--enable-gtk-doc --with-html-dir=%{_gtkdocdir}} \
 	--with-omf-dir=%{_datadir}/omf/mate-desktop
 
 %{__make} \
@@ -186,7 +198,12 @@ rm -rf $RPM_BUILD_ROOT
 
 %files devel
 %defattr(644,root,root,755)
-#%doc %{_datadir}/gtk-doc/html/mate-desktop
 %{_libdir}/libmate-desktop-2.so
 %{_pkgconfigdir}/mate-desktop-2.0.pc
 %{_includedir}/mate-desktop-2.0
+
+%if %{with apidocs}
+%files apidocs
+%defattr(644,root,root,755)
+%{_gtkdocdir}/mate-desktop
+%endif
