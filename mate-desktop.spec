@@ -5,7 +5,7 @@
 Summary:	Shared code for mate-panel, mate-session, mate-file-manager, etc
 Name:		mate-desktop
 Version:	1.5.5
-Release:	0.7
+Release:	0.11
 Source0:	http://pub.mate-desktop.org/releases/1.5/%{name}-%{version}.tar.xz
 # Source0-md5:	683a8c3efcb5270cd215d9c856b0ced6
 Source1:	user-dirs-update-mate.desktop
@@ -18,6 +18,7 @@ BuildRequires:	pkgconfig(gsettings-desktop-schemas)
 BuildRequires:	pkgconfig(libstartup-notification-1.0)
 %{?with_apidoc:BuildRequires:	pkgconfig(mate-doc-utils)}
 BuildRequires:	pkgconfig(unique-1.0)
+BuildRequires:	rpmbuild(find_lang) >= 1.36
 BuildRequires:	tar >= 1:1.22
 BuildRequires:	xz
 Requires:	%{name}-libs = %{version}-%{release}
@@ -75,7 +76,7 @@ NOCONFIGURE=1 ./autogen.sh
 	--with-pnp-ids-path="%{_datadir}/hwdata/pnp.ids" \
 	--enable-unique \
 	%{?with_apidocs:--enable-gtk-doc --with-html-dir=%{_gtkdocdir}} \
-	--with-omf-dir=%{_datadir}/omf/mate-desktop
+	--with-omf-dir=%{_datadir}/omf/%{name}
 
 %{__make} \
 	V=1
@@ -96,7 +97,7 @@ $RPM_BUILD_ROOT%{_desktopdir}/mate-about.desktop
 
 install -Dp %{SOURCE1} $RPM_BUILD_ROOT%{_sysconfdir}/xdg/autostart/user-dirs-update-mate.desktop
 
-%find_lang %{name}
+%find_lang %{name} --with-mate --with-omf --all-name
 
 %post	libs -p /sbin/ldconfig
 %postun	libs -p /sbin/ldconfig
@@ -113,72 +114,16 @@ rm -rf $RPM_BUILD_ROOT
 %files -f %{name}.lang
 %defattr(644,root,root,755)
 %doc AUTHORS COPYING COPYING.LIB NEWS README
-%attr(755,root,root) %{_bindir}/mate-about
 %{_sysconfdir}/xdg/autostart/user-dirs-update-mate.desktop
-%{_desktopdir}/mate-about.desktop
-# XXX %lang
-%{_datadir}/mate/help/*/*/*.xml
-%{_datadir}/omf/mate-desktop/
-%{_datadir}/mate-about/
-%{_datadir}/glib-2.0/schemas/org.mate.*.gschema.xml
+%attr(755,root,root) %{_bindir}/mate-about
 %{_mandir}/man1/mate-about.1*
 %{_pixmapsdir}/gnu-cat*
-
-# XXX package these help dirs where?
-%dir %{_datadir}/mate/help/fdl
-%dir %{_datadir}/mate/help/gpl
-%dir %{_datadir}/mate/help/lgpl
-%dir %{_datadir}/mate/help/fdl/C
-# XXX %lang
-%dir %{_datadir}/mate/help/fdl/ar
-%dir %{_datadir}/mate/help/fdl/ca
-%dir %{_datadir}/mate/help/fdl/de
-%dir %{_datadir}/mate/help/fdl/el
-%dir %{_datadir}/mate/help/fdl/es
-%dir %{_datadir}/mate/help/fdl/eu
-%dir %{_datadir}/mate/help/fdl/fr
-%dir %{_datadir}/mate/help/fdl/hu
-%dir %{_datadir}/mate/help/fdl/ko
-%dir %{_datadir}/mate/help/fdl/oc
-%dir %{_datadir}/mate/help/fdl/pl
-%dir %{_datadir}/mate/help/fdl/sv
-%dir %{_datadir}/mate/help/fdl/uk
-%dir %{_datadir}/mate/help/fdl/vi
-%dir %{_datadir}/mate/help/gpl/C
-%dir %{_datadir}/mate/help/gpl/ar
-%dir %{_datadir}/mate/help/gpl/ca
-%dir %{_datadir}/mate/help/gpl/cs
-%dir %{_datadir}/mate/help/gpl/de
-%dir %{_datadir}/mate/help/gpl/el
-%dir %{_datadir}/mate/help/gpl/es
-%dir %{_datadir}/mate/help/gpl/eu
-%dir %{_datadir}/mate/help/gpl/fi
-%dir %{_datadir}/mate/help/gpl/fr
-%dir %{_datadir}/mate/help/gpl/hu
-%dir %{_datadir}/mate/help/gpl/ko
-%dir %{_datadir}/mate/help/gpl/nds
-%dir %{_datadir}/mate/help/gpl/oc
-%dir %{_datadir}/mate/help/gpl/pa
-%dir %{_datadir}/mate/help/gpl/sv
-%dir %{_datadir}/mate/help/gpl/uk
-%dir %{_datadir}/mate/help/gpl/vi
-%dir %{_datadir}/mate/help/gpl/zh_CN
-%dir %{_datadir}/mate/help/lgpl/C
-%dir %{_datadir}/mate/help/lgpl/ar
-%dir %{_datadir}/mate/help/lgpl/de
-%dir %{_datadir}/mate/help/lgpl/el
-%dir %{_datadir}/mate/help/lgpl/es
-%dir %{_datadir}/mate/help/lgpl/eu
-%dir %{_datadir}/mate/help/lgpl/fi
-%dir %{_datadir}/mate/help/lgpl/fr
-%dir %{_datadir}/mate/help/lgpl/hu
-%dir %{_datadir}/mate/help/lgpl/ko
-%dir %{_datadir}/mate/help/lgpl/oc
-%dir %{_datadir}/mate/help/lgpl/pa
-%dir %{_datadir}/mate/help/lgpl/sv
-%dir %{_datadir}/mate/help/lgpl/uk
-%dir %{_datadir}/mate/help/lgpl/vi
-%dir %{_datadir}/mate/help/lgpl/zh_CN
+%{_desktopdir}/mate-about.desktop
+%dir %{_datadir}/omf/%{name}/fdl
+%dir %{_datadir}/omf/%{name}/gpl
+%dir %{_datadir}/omf/%{name}/lgpl
+%{_datadir}/mate-about
+%{_datadir}/glib-2.0/schemas/org.mate.*.gschema.xml
 
 %files libs
 %defattr(644,root,root,755)
