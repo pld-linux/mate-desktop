@@ -1,20 +1,11 @@
-# TODO
-# - split or move libs to skip circular deps:
-# error: LOOP:
-#error: removing mate-desktop-1.5.5-0.3.i686 "Requires: mate-desktop-libs = 1.5.5-0.3" from tsort relations.
-#error:     mate-desktop-1.5.5-0.3.i686              Requires: mate-desktop-libs = 1.5.5-0.3
-#error: removing mate-desktop-libs-1.5.5-0.3.i686 "Requires: mate-desktop = 1.5.5-0.3" from tsort relations.
-#error:     mate-desktop-libs-1.5.5-0.3.i686         Requires: mate-desktop = 1.5.5-0.3
-# - fix gtk-doc building (probably missing some dtd's)
-# - devel: /usr/share/gtk-doc/html is needed by mate-desktop-devel-1.5.5-0.4.i686
-
+#
 # Conditional build:
 %bcond_without	apidocs		# disable gtk-doc
 
 Summary:	Shared code for mate-panel, mate-session, mate-file-manager, etc
 Name:		mate-desktop
 Version:	1.5.5
-Release:	0.6
+Release:	0.7
 Source0:	http://pub.mate-desktop.org/releases/1.5/%{name}-%{version}.tar.xz
 # Source0-md5:	683a8c3efcb5270cd215d9c856b0ced6
 Source1:	user-dirs-update-mate.desktop
@@ -45,7 +36,6 @@ data files and other shared components of the MATE user environment.
 Summary:	Shared libraries for libmate-desktop
 License:	LGPL v2+
 Group:		Libraries
-Requires:	%{name} = %{version}-%{release}
 
 %description libs
 Shared libraries for libmate-desktop
@@ -95,8 +85,7 @@ rm -rf $RPM_BUILD_ROOT
 %{__make} install \
 	DESTDIR=$RPM_BUILD_ROOT
 
-find $RPM_BUILD_ROOT -name '*.la' -exec rm -f {} ';'
-find $RPM_BUILD_ROOT -name '*.a' -exec rm -f {} ';'
+%{__rm} $RPM_BUILD_ROOT%{_libdir}/libmate-desktop-2.la
 
 desktop-file-install \
 	--remove-category="MATE" \
