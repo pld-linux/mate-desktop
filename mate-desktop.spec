@@ -1,24 +1,27 @@
-#
+# TODO:
+# - check what's up with this, runtime or compile time: --with-pnp-ids-path="%{_datadir}/hwdata/pnp.ids"
+
 # Conditional build:
 %bcond_without	apidocs		# disable gtk-doc
 
 Summary:	Shared code for mate-panel, mate-session, mate-file-manager, etc
 Name:		mate-desktop
 Version:	1.5.5
-Release:	0.11
+Release:	0.12
+License:	GPL v2+ and LGPL v2+ and MIT
+Group:		X11/Applications
 Source0:	http://pub.mate-desktop.org/releases/1.5/%{name}-%{version}.tar.xz
 # Source0-md5:	683a8c3efcb5270cd215d9c856b0ced6
 Source1:	user-dirs-update-mate.desktop
-License:	GPLv2+ and LGPLv2+ and MIT
-Group:		X11/Applications
-URL:		http://mate-desktop.org/
+URL:		http://wiki.mate-desktop.org/mate-desktop
 BuildRequires:	desktop-file-utils
+BuildRequires:	gsettings-desktop-schemas-devel
+BuildRequires:	intltool >= 0.40.0
+BuildRequires:	libunique-devel
 BuildRequires:	mate-common
-BuildRequires:	pkgconfig(gsettings-desktop-schemas)
-BuildRequires:	pkgconfig(libstartup-notification-1.0)
-%{?with_apidoc:BuildRequires:	pkgconfig(mate-doc-utils)}
-BuildRequires:	pkgconfig(unique-1.0)
+%{?with_apidoc:BuildRequires:	mate-doc-utils}
 BuildRequires:	rpmbuild(find_lang) >= 1.36
+BuildRequires:	startup-notification-devel
 BuildRequires:	tar >= 1:1.22
 BuildRequires:	xz
 Requires:	%{name}-libs = %{version}-%{release}
