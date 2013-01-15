@@ -17,7 +17,7 @@ BuildRequires:	gsettings-desktop-schemas-devel
 BuildRequires:	intltool >= 0.40.0
 BuildRequires:	libunique-devel
 BuildRequires:	mate-common
-%{?with_apidoc:BuildRequires:	mate-doc-utils}
+%{?with_apidocs:BuildRequires:	mate-doc-utils}
 BuildRequires:	rpmbuild(find_lang) >= 1.36
 BuildRequires:	startup-notification-devel
 BuildRequires:	tar >= 1:1.22
