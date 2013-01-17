@@ -13,7 +13,8 @@ Source0:	http://pub.mate-desktop.org/releases/1.5/%{name}-%{version}.tar.xz
 Source1:	user-dirs-update-mate.desktop
 URL:		http://wiki.mate-desktop.org/mate-desktop
 BuildRequires:	desktop-file-utils
-BuildRequires:	gsettings-desktop-schemas-devel
+BuildRequires:	docbook-dtd412-xml
+BuildRequires:	gettext-devel
 BuildRequires:	intltool >= 0.40.0
 BuildRequires:	libunique-devel
 BuildRequires:	mate-common
