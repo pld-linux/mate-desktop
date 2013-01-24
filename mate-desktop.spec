@@ -5,7 +5,7 @@
 Summary:	Shared code for mate-panel, mate-session, mate-file-manager, etc
 Name:		mate-desktop
 Version:	1.5.5
-Release:	1
+Release:	2
 License:	GPL v2+ and LGPL v2+ and MIT
 Group:		X11/Applications
 Source0:	http://pub.mate-desktop.org/releases/1.5/%{name}-%{version}.tar.xz
@@ -25,9 +25,9 @@ BuildRequires:	tar >= 1:1.22
 BuildRequires:	xz
 Requires:	%{name}-libs = %{version}-%{release}
 Requires:	glib2 >= 1:2.26.0
-Requires:	python-pygtk-gtk
+#Requires:	python-pygtk-gtk
 # for identifying monitors from pnp.ids (libmate-desktop/display-name.c)
-Requires:	hwdata
+Requires:	hwdata >= 0.243-6
 #Requires:	redhat-menus
 Requires:	xdg-user-dirs-gtk
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
@@ -77,7 +77,7 @@ NOCONFIGURE=1 ./autogen.sh
 	--disable-scrollkeeper \
 	--disable-static \
 	--disable-schemas-compile \
-	--with-pnp-ids-path=%{_datadir}/hwdata/pnp.ids \
+	--with-pnp-ids-path=/lib/hwdata/pnp.ids \
 	--enable-unique \
 	%{?with_apidocs:--enable-gtk-doc --with-html-dir=%{_gtkdocdir}} \
 	--with-omf-dir=%{_datadir}/omf/%{name}
