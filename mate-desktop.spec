@@ -4,12 +4,12 @@
 
 Summary:	Shared code for mate-panel, mate-session, mate-file-manager, etc
 Name:		mate-desktop
-Version:	1.5.5
-Release:	2
+Version:	1.5.6
+Release:	1
 License:	GPL v2+ and LGPL v2+ and MIT
 Group:		X11/Applications
 Source0:	http://pub.mate-desktop.org/releases/1.5/%{name}-%{version}.tar.xz
-# Source0-md5:	683a8c3efcb5270cd215d9c856b0ced6
+# Source0-md5:	8d7c7348c13913ba55d07891a184b515
 Source1:	user-dirs-update-mate.desktop
 URL:		http://wiki.mate-desktop.org/mate-desktop
 BuildRequires:	desktop-file-utils
@@ -73,6 +73,7 @@ Dokumentacja API mate-desktop.
 %build
 NOCONFIGURE=1 ./autogen.sh
 %configure \
+	--disable-silent-rules \
 	--enable-gnucat \
 	--disable-scrollkeeper \
 	--disable-static \
@@ -82,8 +83,7 @@ NOCONFIGURE=1 ./autogen.sh
 	%{?with_apidocs:--enable-gtk-doc --with-html-dir=%{_gtkdocdir}} \
 	--with-omf-dir=%{_datadir}/omf/%{name}
 
-%{__make} \
-	V=1
+%{__make}
 
 %install
 rm -rf $RPM_BUILD_ROOT
@@ -91,6 +91,9 @@ rm -rf $RPM_BUILD_ROOT
 	DESTDIR=$RPM_BUILD_ROOT
 
 %{__rm} $RPM_BUILD_ROOT%{_libdir}/libmate-desktop-2.la
+
+# mate < 1.5 did not exist in pld, avoid dependency on mate-conf
+%{__rm} $RPM_BUILD_ROOT%{_datadir}/MateConf/gsettings/mate-desktop.convert
 
 desktop-file-install \
 	--remove-category="MATE" \
