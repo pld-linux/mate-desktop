@@ -5,12 +5,11 @@
 Summary:	Shared code for mate-panel, mate-session, mate-file-manager, etc
 Name:		mate-desktop
 Version:	1.5.7
-Release:	1
+Release:	2
 License:	GPL v2+ and LGPL v2+ and MIT
 Group:		X11/Applications
 Source0:	http://pub.mate-desktop.org/releases/1.5/%{name}-%{version}.tar.xz
 # Source0-md5:	539cb021d6384e83c0af7d41d1152d6b
-Source1:	user-dirs-update-mate.desktop
 URL:		http://wiki.mate-desktop.org/mate-desktop
 BuildRequires:	desktop-file-utils
 BuildRequires:	docbook-dtd412-xml
@@ -29,7 +28,7 @@ Requires:	glib2 >= 1:2.26.0
 # for identifying monitors from pnp.ids (libmate-desktop/display-name.c)
 Requires:	hwdata >= 0.243-6
 #Requires:	redhat-menus
-Requires:	xdg-user-dirs-gtk
+Requires:	xdg-user-dirs-gtk >= 0.10-2
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -102,8 +101,6 @@ desktop-file-install \
 	--dir=$RPM_BUILD_ROOT%{_desktopdir} \
 $RPM_BUILD_ROOT%{_desktopdir}/mate-about.desktop
 
-install -Dp %{SOURCE1} $RPM_BUILD_ROOT%{_sysconfdir}/xdg/autostart/user-dirs-update-mate.desktop
-
 %find_lang %{name} --with-mate --with-omf --all-name
 
 %post	libs -p /sbin/ldconfig
@@ -121,7 +118,6 @@ rm -rf $RPM_BUILD_ROOT
 %files -f %{name}.lang
 %defattr(644,root,root,755)
 %doc AUTHORS COPYING COPYING.LIB NEWS README
-%{_sysconfdir}/xdg/autostart/user-dirs-update-mate.desktop
 %attr(755,root,root) %{_bindir}/mate-about
 %{_mandir}/man1/mate-about.1*
 %{_pixmapsdir}/gnu-cat*
