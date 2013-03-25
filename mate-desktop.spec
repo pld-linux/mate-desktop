@@ -4,12 +4,12 @@
 
 Summary:	Shared code for mate-panel, mate-session, mate-file-manager, etc
 Name:		mate-desktop
-Version:	1.5.7
-Release:	2
+Version:	1.5.8
+Release:	1
 License:	GPL v2+ and LGPL v2+ and MIT
 Group:		X11/Applications
 Source0:	http://pub.mate-desktop.org/releases/1.5/%{name}-%{version}.tar.xz
-# Source0-md5:	539cb021d6384e83c0af7d41d1152d6b
+# Source0-md5:	c3b13f8d9125578c98cdf4c8ef940bfb
 URL:		http://wiki.mate-desktop.org/mate-desktop
 BuildRequires:	desktop-file-utils
 BuildRequires:	docbook-dtd412-xml
@@ -24,10 +24,8 @@ BuildRequires:	tar >= 1:1.22
 BuildRequires:	xz
 Requires:	%{name}-libs = %{version}-%{release}
 Requires:	glib2 >= 1:2.26.0
-#Requires:	python-pygtk-gtk
 # for identifying monitors from pnp.ids (libmate-desktop/display-name.c)
 Requires:	hwdata >= 0.243-6
-#Requires:	redhat-menus
 Requires:	xdg-user-dirs-gtk >= 0.10-2
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
