@@ -4,12 +4,12 @@
 
 Summary:	Shared code for mate-panel, mate-session, mate-file-manager, etc
 Name:		mate-desktop
-Version:	1.5.8
+Version:	1.6.0
 Release:	1
 License:	GPL v2+ and LGPL v2+ and MIT
 Group:		X11/Applications
-Source0:	http://pub.mate-desktop.org/releases/1.5/%{name}-%{version}.tar.xz
-# Source0-md5:	c3b13f8d9125578c98cdf4c8ef940bfb
+Source0:	http://pub.mate-desktop.org/releases/1.6/%{name}-%{version}.tar.xz
+# Source0-md5:	425e5bf587372cc05dcb4538b8c3825d
 URL:		http://wiki.mate-desktop.org/mate-desktop
 BuildRequires:	desktop-file-utils
 BuildRequires:	docbook-dtd412-xml
