@@ -5,7 +5,7 @@
 Summary:	Shared code for mate-panel, mate-session, mate-file-manager, etc
 Name:		mate-desktop
 Version:	1.6.0
-Release:	1
+Release:	2
 License:	GPL v2+ and LGPL v2+ and MIT
 Group:		X11/Applications
 Source0:	http://pub.mate-desktop.org/releases/1.6/%{name}-%{version}.tar.xz
@@ -71,7 +71,6 @@ Dokumentacja API mate-desktop.
 NOCONFIGURE=1 ./autogen.sh
 %configure \
 	--disable-silent-rules \
-	--enable-gnucat \
 	--disable-scrollkeeper \
 	--disable-static \
 	--disable-schemas-compile \
@@ -118,7 +117,6 @@ rm -rf $RPM_BUILD_ROOT
 %doc AUTHORS COPYING COPYING.LIB NEWS README
 %attr(755,root,root) %{_bindir}/mate-about
 %{_mandir}/man1/mate-about.1*
-%{_pixmapsdir}/gnu-cat*
 %{_desktopdir}/mate-about.desktop
 %dir %{_datadir}/omf/%{name}/fdl
 %dir %{_datadir}/omf/%{name}/gpl
