@@ -6,12 +6,12 @@
 Summary:	Shared code for mate-panel, mate-session, mate-file-manager, etc.
 Summary(pl.UTF-8):	Kod współdzielony przez pakiety mate-panel, mate-session, mate-file-manager itd.
 Name:		mate-desktop
-Version:	1.6.1
-Release:	2
+Version:	1.6.2
+Release:	1
 License:	LGPL v2+ with MIT parts (library), GPL v2+ (mate-about)
 Group:		X11/Applications
 Source0:	http://pub.mate-desktop.org/releases/1.6/%{name}-%{version}.tar.xz
-# Source0-md5:	540936afdcd5d0a694569af9a2cac132
+# Source0-md5:	0400f1e8eb8a917d1afae33b16a2f5dd
 URL:		http://wiki.mate-desktop.org/mate-desktop
 BuildRequires:	desktop-file-utils
 BuildRequires:	docbook-dtd412-xml
@@ -150,6 +150,7 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %doc AUTHORS ChangeLog MAINTAINERS NEWS README
 %attr(755,root,root) %{_bindir}/mate-about
+%attr(755,root,root) %{_bindir}/mate-gsettings-toggle
 %{_mandir}/man1/mate-about.1*
 %{_desktopdir}/mate-about.desktop
 %dir %{_datadir}/omf/%{name}/fdl
