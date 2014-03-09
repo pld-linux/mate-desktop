@@ -1,18 +1,21 @@
-#
-# Conditional build:
+# # Conditional build:
 %bcond_without	apidocs		# disable gtk-doc
 %bcond_with	gtk3		# use GTK+ 3.x instead of GTK+ 2.x
 
 Summary:	Shared code for mate-panel, mate-session, mate-file-manager, etc.
 Summary(pl.UTF-8):	Kod współdzielony przez pakiety mate-panel, mate-session, mate-file-manager itd.
 Name:		mate-desktop
-Version:	1.6.2
+Version:	1.8.0
 Release:	1
 License:	LGPL v2+ with MIT parts (library), GPL v2+ (mate-about)
 Group:		X11/Applications
-Source0:	http://pub.mate-desktop.org/releases/1.6/%{name}-%{version}.tar.xz
-# Source0-md5:	0400f1e8eb8a917d1afae33b16a2f5dd
+Source0:	http://pub.mate-desktop.org/releases/1.8/%{name}-%{version}.tar.xz
+# Source0-md5:	d808e7dd6445991bc41b65982144df00
+Patch0:		%{name}-help_prefix.patch
 URL:		http://wiki.mate-desktop.org/mate-desktop
+BuildRequires:	autoconf
+BuildRequires:	automake >= 1:1.9
+BuildRequires:	dconf-devel >= 0.13.4
 BuildRequires:	desktop-file-utils
 BuildRequires:	docbook-dtd412-xml
 BuildRequires:	gdk-pixbuf2-devel >= 2.4.0
@@ -22,16 +25,17 @@ BuildRequires:	glib2-devel >= 1:2.26.0
 %{?with_gtk3:BuildRequires:	gtk+3-devel >= 3.0.0}
 BuildRequires:	gtk-doc >= 1.4
 BuildRequires:	intltool >= 0.40.0
+BuildRequires:	libtool
 %{!?with_gtk3:BuildRequires:	libunique-devel >= 1.0}
 %{?with_gtk3:BuildRequires:	libunique3-devel >= 3.0}
 BuildRequires:	mate-common
-%{?with_apidocs:BuildRequires:	mate-doc-utils >= 1.1.0}
 BuildRequires:	rpmbuild(find_lang) >= 1.36
 BuildRequires:	startup-notification-devel >= 0.5
 BuildRequires:	tar >= 1:1.22
 BuildRequires:	xorg-lib-libX11-devel
 BuildRequires:	xorg-lib-libXrandr-devel >= 1.2
 BuildRequires:	xz
+BuildRequires:	yelp-tools
 Requires:	%{name}-libs = %{version}-%{release}
 # for identifying monitors from pnp.ids (libmate-desktop/display-name.c)
 Requires:	hwdata >= 0.243-6
@@ -100,8 +104,15 @@ Dokumentacja API mate-desktop.
 
 %prep
 %setup -q
+%patch0 -p1
 
 %build
+%{__gtkdocize}
+%{__libtoolize}
+%{__aclocal} -I m4
+%{__autoconf}
+%{__autoheader}
+%{__automake}
 %configure \
 	%{?with_apidocs:--enable-gtk-doc --with-html-dir=%{_gtkdocdir}} \
 	--disable-schemas-compile \
@@ -121,6 +132,7 @@ rm -rf $RPM_BUILD_ROOT
 	DESTDIR=$RPM_BUILD_ROOT
 
 %{__rm} $RPM_BUILD_ROOT%{_libdir}/libmate-desktop-2.la
+%{__rm} -r $RPM_BUILD_ROOT%{_localedir}/cmn
 
 # mate < 1.5 did not exist in pld, avoid dependency on mate-conf
 %{__rm} $RPM_BUILD_ROOT%{_datadir}/MateConf/gsettings/mate-desktop.convert
@@ -152,10 +164,9 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_bindir}/mate-about
 %attr(755,root,root) %{_bindir}/mate-gsettings-toggle
 %{_mandir}/man1/mate-about.1*
+%{_mandir}/man1/mate-gsettings-toggle.1*
 %{_desktopdir}/mate-about.desktop
-%dir %{_datadir}/omf/%{name}/fdl
-%dir %{_datadir}/omf/%{name}/gpl
-%dir %{_datadir}/omf/%{name}/lgpl
+%{_desktopdir}/mate-user-guide.desktop
 %{_datadir}/mate-about
 %{_datadir}/glib-2.0/schemas/org.mate.*.gschema.xml
 
