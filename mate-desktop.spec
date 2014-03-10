@@ -1,4 +1,5 @@
-# # Conditional build:
+#
+# Conditional build:
 %bcond_without	apidocs		# disable gtk-doc
 %bcond_with	gtk3		# use GTK+ 3.x instead of GTK+ 2.x
 
@@ -77,8 +78,8 @@ Summary(pl.UTF-8):	Pliki nagłówkowe biblioteki libmate-desktop
 License:	LGPL v2+
 Group:		Development/Libraries
 Requires:	%{name}-libs = %{version}-%{release}
-Requires:	glib2-devel >= 1:2.26.0
 Requires:	gdk-pixbuf2-devel >= 2.4.0
+Requires:	glib2-devel >= 1:2.26.0
 %{!?with_gtk3:Requires:	gtk+2-devel >= 2:2.24.0}
 %{?with_gtk3:Requires:	gtk+3-devel >= 3.0.0}
 Requires:	startup-notification-devel >= 0.5
