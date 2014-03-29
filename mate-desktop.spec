@@ -117,13 +117,11 @@ Dokumentacja API mate-desktop.
 %configure \
 	%{?with_apidocs:--enable-gtk-doc --with-html-dir=%{_gtkdocdir}} \
 	--disable-schemas-compile \
-	--disable-scrollkeeper \
 	--disable-silent-rules \
 	--disable-static \
 	--enable-unique \
 	--enable-mpaste \
 	%{?with_gtk3:--with-gtk=3.0} \
-	--with-omf-dir=%{_datadir}/omf/%{name} \
 	--with-pnp-ids-path=/lib/hwdata/pnp.ids
 
 %{__make}
