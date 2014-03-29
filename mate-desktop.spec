@@ -121,6 +121,7 @@ Dokumentacja API mate-desktop.
 	--disable-silent-rules \
 	--disable-static \
 	--enable-unique \
+	--enable-mpaste \
 	%{?with_gtk3:--with-gtk=3.0} \
 	--with-omf-dir=%{_datadir}/omf/%{name} \
 	--with-pnp-ids-path=/lib/hwdata/pnp.ids
@@ -164,6 +165,7 @@ rm -rf $RPM_BUILD_ROOT
 %doc AUTHORS ChangeLog MAINTAINERS NEWS README
 %attr(755,root,root) %{_bindir}/mate-about
 %attr(755,root,root) %{_bindir}/mate-gsettings-toggle
+%attr(755,root,root) %{_bindir}/mpaste
 %{_mandir}/man1/mate-about.1*
 %{_mandir}/man1/mate-gsettings-toggle.1*
 %{_desktopdir}/mate-about.desktop
