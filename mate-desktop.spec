@@ -69,7 +69,7 @@ Requires:	xorg-lib-libXrandr >= 1.2
 %description libs
 Shared libmate-desktop library.
 
-%description libs -l pl.UTF_8
+%description libs -l pl.UTF-8
 Biblioteka współdzielona libmate-desktop.
 
 %package devel
