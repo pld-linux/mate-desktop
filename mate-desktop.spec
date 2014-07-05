@@ -14,7 +14,7 @@ Source0:	http://pub.mate-desktop.org/releases/1.8/%{name}-%{version}.tar.xz
 # Source0-md5:	985c9396685bf31217f5322a6e3cbaff
 Patch0:		%{name}-help_prefix.patch
 URL:		http://wiki.mate-desktop.org/mate-desktop
-BuildRequires:	autoconf
+BuildRequires:	autoconf >= 2.50
 BuildRequires:	automake >= 1:1.9
 BuildRequires:	dconf-devel >= 0.13.4
 BuildRequires:	desktop-file-utils
@@ -30,6 +30,7 @@ BuildRequires:	libtool
 %{!?with_gtk3:BuildRequires:	libunique-devel >= 1.0}
 %{?with_gtk3:BuildRequires:	libunique3-devel >= 3.0}
 BuildRequires:	mate-common
+BuildRequires:	pkgconfig
 BuildRequires:	rpmbuild(find_lang) >= 1.36
 BuildRequires:	startup-notification-devel >= 0.5
 BuildRequires:	tar >= 1:1.22
