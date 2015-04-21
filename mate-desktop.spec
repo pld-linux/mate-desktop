@@ -6,13 +6,12 @@
 Summary:	Shared code for mate-panel, mate-session, mate-file-manager, etc.
 Summary(pl.UTF-8):	Kod współdzielony przez pakiety mate-panel, mate-session, mate-file-manager itd.
 Name:		mate-desktop
-Version:	1.8.2
+Version:	1.10.0
 Release:	1
 License:	LGPL v2+ with MIT parts (library), GPL v2+ (mate-about)
 Group:		X11/Applications
-Source0:	http://pub.mate-desktop.org/releases/1.8/%{name}-%{version}.tar.xz
-# Source0-md5:	c3de1b8a662fcc6a8e872765a7f2f96f
-Patch0:		%{name}-help_prefix.patch
+Source0:	http://pub.mate-desktop.org/releases/1.10/%{name}-%{version}.tar.xz
+# Source0-md5:	af952debca4d979107681e8b7d085fe8
 URL:		http://wiki.mate-desktop.org/mate-desktop
 BuildRequires:	autoconf >= 2.50
 BuildRequires:	automake >= 1:1.9
@@ -21,7 +20,8 @@ BuildRequires:	desktop-file-utils
 BuildRequires:	docbook-dtd412-xml
 BuildRequires:	gdk-pixbuf2-devel >= 2.4.0
 BuildRequires:	gettext-tools
-BuildRequires:	glib2-devel >= 1:2.26.0
+BuildRequires:	glib2-devel >= 1:2.36.0
+BuildRequires:	gobject-introspection-devel >= 0.9.7
 %{!?with_gtk3:BuildRequires:	gtk+2-devel >= 2:2.24.0}
 %{?with_gtk3:BuildRequires:	gtk+3-devel >= 3.0.0}
 BuildRequires:	gtk-doc >= 1.4
@@ -61,7 +61,7 @@ Summary(pl.UTF-8):	Biblioteka współdzielona libmate-desktop
 License:	LGPL v2+
 Group:		Libraries
 Requires:	gdk-pixbuf2 >= 2.4.0
-Requires:	glib2 >= 1:2.26.0
+Requires:	glib2 >= 1:2.36.0
 %{!?with_gtk3:Requires:	gtk+2 >= 2:2.24.0}
 %{?with_gtk3:Requires:	gtk+3 >= 3.0.0}
 Requires:	startup-notification >= 0.5
@@ -80,7 +80,7 @@ License:	LGPL v2+
 Group:		Development/Libraries
 Requires:	%{name}-libs = %{version}-%{release}
 Requires:	gdk-pixbuf2-devel >= 2.4.0
-Requires:	glib2-devel >= 1:2.26.0
+Requires:	glib2-devel >= 1:2.36.0
 %{!?with_gtk3:Requires:	gtk+2-devel >= 2:2.24.0}
 %{?with_gtk3:Requires:	gtk+3-devel >= 3.0.0}
 Requires:	startup-notification-devel >= 0.5
@@ -109,7 +109,6 @@ Dokumentacja API mate-desktop.
 
 %prep
 %setup -q
-%patch0 -p1
 
 %build
 %{__gtkdocize}
@@ -166,12 +165,11 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %doc AUTHORS ChangeLog MAINTAINERS NEWS README
 %attr(755,root,root) %{_bindir}/mate-about
-%attr(755,root,root) %{_bindir}/mate-gsettings-toggle
+%attr(755,root,root) %{_bindir}/mate-color-select
 %attr(755,root,root) %{_bindir}/mpaste
 %{_mandir}/man1/mate-about.1*
-%{_mandir}/man1/mate-gsettings-toggle.1*
 %{_desktopdir}/mate-about.desktop
-%{_desktopdir}/mate-user-guide.desktop
+%{_desktopdir}/mate-color-select.desktop
 %{_datadir}/mate-about
 %{_datadir}/glib-2.0/schemas/org.mate.*.gschema.xml
 
@@ -179,11 +177,13 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_libdir}/libmate-desktop-2.so.*.*.*
 %attr(755,root,root) %ghost %{_libdir}/libmate-desktop-2.so.17
+%{_libdir}/girepository-1.0/MateDesktop-2.0.typelib
 
 %files devel
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_libdir}/libmate-desktop-2.so
 %{_includedir}/mate-desktop-2.0
+%{_datadir}/gir-1.0/MateDesktop-2.0.gir
 %{_pkgconfigdir}/mate-desktop-2.0.pc
 
 %if %{with apidocs}
