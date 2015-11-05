@@ -6,12 +6,12 @@
 Summary:	Shared code for mate-panel, mate-session, mate-file-manager, etc.
 Summary(pl.UTF-8):	Kod współdzielony przez pakiety mate-panel, mate-session, mate-file-manager itd.
 Name:		mate-desktop
-Version:	1.10.2
-Release:	2
+Version:	1.12.0
+Release:	1
 License:	LGPL v2+ with MIT parts (library), GPL v2+ (mate-about)
 Group:		X11/Applications
-Source0:	http://pub.mate-desktop.org/releases/1.10/%{name}-%{version}.tar.xz
-# Source0-md5:	677732edfca5a6f0f000616d59931b65
+Source0:	http://pub.mate-desktop.org/releases/1.12/%{name}-%{version}.tar.xz
+# Source0-md5:	1b7ed68fb5017b40a001e020349be514
 URL:		http://wiki.mate-desktop.org/mate-desktop
 BuildRequires:	autoconf >= 2.50
 BuildRequires:	automake >= 1:1.9
@@ -25,7 +25,7 @@ BuildRequires:	gobject-introspection-devel >= 0.9.7
 %{!?with_gtk3:BuildRequires:	gtk+2-devel >= 2:2.24.0}
 %{?with_gtk3:BuildRequires:	gtk+3-devel >= 3.0.0}
 BuildRequires:	gtk-doc >= 1.4
-BuildRequires:	intltool >= 0.40.0
+BuildRequires:	intltool >= 0.50.1
 BuildRequires:	libtool
 %{!?with_gtk3:BuildRequires:	libunique-devel >= 1.0}
 %{?with_gtk3:BuildRequires:	libunique3-devel >= 3.0}
@@ -35,9 +35,11 @@ BuildRequires:	rpmbuild(find_lang) >= 1.36
 BuildRequires:	startup-notification-devel >= 0.5
 BuildRequires:	tar >= 1:1.22
 BuildRequires:	xorg-lib-libX11-devel
-BuildRequires:	xorg-lib-libXrandr-devel >= 1.2
+BuildRequires:	xorg-lib-libXrandr-devel >= 1.3
 BuildRequires:	xz
 BuildRequires:	yelp-tools
+Requires(post,postun):	gtk-update-icon-cache
+Requires(post,postun):	hicolor-icon-theme
 Requires:	%{name}-libs = %{version}-%{release}
 # for identifying monitors from pnp.ids (libmate-desktop/display-name.c)
 Requires:	hwdata >= 0.243-6
@@ -156,9 +158,11 @@ rm -rf $RPM_BUILD_ROOT
 
 %post
 %glib_compile_schemas
+%update_icon_cache hicolor
 
 %postun
 %glib_compile_schemas
+%update_icon_cache hicolor
 
 %post	libs -p /sbin/ldconfig
 %postun	libs -p /sbin/ldconfig
@@ -174,7 +178,8 @@ rm -rf $RPM_BUILD_ROOT
 %{_mandir}/man1/mpaste.1*
 %{_desktopdir}/mate-about.desktop
 %{_desktopdir}/mate-color-select.desktop
-%{_desktopdir}/mate-user-guide.desktop
+%{_iconsdir}/hicolor/*/apps/mate.png
+%{_iconsdir}/hicolor/scalable/apps/mate-symbolic.svg
 %{_datadir}/mate-about
 %{_datadir}/glib-2.0/schemas/org.mate.*.gschema.xml
 
