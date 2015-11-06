@@ -62,12 +62,13 @@ Summary:	Shared libmate-desktop library
 Summary(pl.UTF-8):	Biblioteka współdzielona libmate-desktop
 License:	LGPL v2+
 Group:		Libraries
+Requires:	dconf >= 0.13.4
 Requires:	gdk-pixbuf2 >= 2.4.0
 Requires:	glib2 >= 1:2.36.0
 %{!?with_gtk3:Requires:	gtk+2 >= 2:2.24.0}
 %{?with_gtk3:Requires:	gtk+3 >= 3.0.0}
 Requires:	startup-notification >= 0.5
-Requires:	xorg-lib-libXrandr >= 1.2
+Requires:	xorg-lib-libXrandr >= 1.3
 
 %description libs
 Shared libmate-desktop library.
@@ -81,6 +82,7 @@ Summary(pl.UTF-8):	Pliki nagłówkowe biblioteki libmate-desktop
 License:	LGPL v2+
 Group:		Development/Libraries
 Requires:	%{name}-libs = %{version}-%{release}
+Requires:	dconf-devel >= 0.13.4
 Requires:	gdk-pixbuf2-devel >= 2.4.0
 Requires:	glib2-devel >= 1:2.36.0
 %{!?with_gtk3:Requires:	gtk+2-devel >= 2:2.24.0}
@@ -137,12 +139,9 @@ rm -rf $RPM_BUILD_ROOT
 	DESTDIR=$RPM_BUILD_ROOT
 
 %{__rm} $RPM_BUILD_ROOT%{_libdir}/libmate-desktop-2.la
-%{__rm} -r $RPM_BUILD_ROOT%{_localedir}/cmn
 
 # mate < 1.5 did not exist in pld, avoid dependency on mate-conf
 %{__rm} $RPM_BUILD_ROOT%{_datadir}/MateConf/gsettings/mate-desktop.convert
-
-%{__rm} -r $RPM_BUILD_ROOT%{_localedir}/ku_IQ
 
 desktop-file-install \
 	--remove-category="MATE" \
@@ -151,7 +150,10 @@ desktop-file-install \
 	--dir=$RPM_BUILD_ROOT%{_desktopdir} \
 	$RPM_BUILD_ROOT%{_desktopdir}/mate-about.desktop
 
-%find_lang %{name} --with-mate --with-omf --all-name
+# ku_IQ not supported yet by glibc, ur_PK is empty version of ur
+%{__rm} -r $RPM_BUILD_ROOT%{_localedir}/{ku_IQ,ur_PK}
+
+%find_lang %{name} --with-mate
 
 %clean
 rm -rf $RPM_BUILD_ROOT
