@@ -6,12 +6,12 @@
 Summary:	Shared code for mate-panel, mate-session, mate-file-manager, etc.
 Summary(pl.UTF-8):	Kod współdzielony przez pakiety mate-panel, mate-session, mate-file-manager itd.
 Name:		mate-desktop
-Version:	1.12.0
+Version:	1.12.1
 Release:	1
 License:	LGPL v2+ with MIT parts (library), GPL v2+ (mate-about)
 Group:		X11/Applications
 Source0:	http://pub.mate-desktop.org/releases/1.12/%{name}-%{version}.tar.xz
-# Source0-md5:	1b7ed68fb5017b40a001e020349be514
+# Source0-md5:	f5e1fb4f0b59b3d09b00a90cb07bc281
 URL:		http://wiki.mate-desktop.org/mate-desktop
 BuildRequires:	autoconf >= 2.50
 BuildRequires:	automake >= 1:1.9
