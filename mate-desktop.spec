@@ -6,12 +6,12 @@
 Summary:	Shared code for mate-panel, mate-session, mate-file-manager, etc.
 Summary(pl.UTF-8):	Kod współdzielony przez pakiety mate-panel, mate-session, mate-file-manager itd.
 Name:		mate-desktop
-Version:	1.14.0
+Version:	1.14.1
 Release:	1
 License:	LGPL v2+ with MIT parts (library), GPL v2+ (mate-about)
 Group:		X11/Applications
 Source0:	http://pub.mate-desktop.org/releases/1.14/%{name}-%{version}.tar.xz
-# Source0-md5:	59108d3f99b502a02305804852e8eed8
+# Source0-md5:	3d8d55e228b4ab82cf33004e314820e0
 URL:		http://wiki.mate-desktop.org/mate-desktop
 BuildRequires:	autoconf >= 2.50
 BuildRequires:	automake >= 1:1.9
@@ -148,7 +148,7 @@ desktop-file-install \
 	$RPM_BUILD_ROOT%{_desktopdir}/mate-about.desktop
 
 # jv,ku_IQ not supported yet by glibc, ur_PK is empty version of ur
-%{__rm} -r $RPM_BUILD_ROOT%{_localedir}/{jv,ku_IQ,ur_PK}
+%{__rm} -r $RPM_BUILD_ROOT%{_localedir}/{frp,jv,ku_IQ,ur_PK}
 
 %find_lang %{name} --with-mate
 
@@ -179,6 +179,7 @@ rm -rf $RPM_BUILD_ROOT
 %{_desktopdir}/mate-color-select.desktop
 %{_iconsdir}/hicolor/*/apps/mate.png
 %{_iconsdir}/hicolor/scalable/apps/mate-symbolic.svg
+%{_iconsdir}/hicolor/scalable/apps/mate.svg
 %{_datadir}/mate-about
 %{_datadir}/glib-2.0/schemas/org.mate.*.gschema.xml
 
