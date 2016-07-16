@@ -147,8 +147,8 @@ desktop-file-install \
 	--dir=$RPM_BUILD_ROOT%{_desktopdir} \
 	$RPM_BUILD_ROOT%{_desktopdir}/mate-about.desktop
 
-# jv,ku_IQ not supported yet by glibc, ur_PK is empty version of ur
-%{__rm} -r $RPM_BUILD_ROOT%{_localedir}/{frp,jv,ku_IQ,ur_PK}
+# es_419 is bogus name, frp,jv,ku_IQ,nah,nqo,sco not supported yet by glibc, ur_PK is empty version of ur
+%{__rm} -r $RPM_BUILD_ROOT%{_localedir}/{es_419,frp,jv,ku_IQ,nah,nqo,sco,ur_PK}
 
 %find_lang %{name} --with-mate
 
