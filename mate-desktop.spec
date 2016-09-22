@@ -6,12 +6,12 @@
 Summary:	Shared code for mate-panel, mate-session, mate-file-manager, etc.
 Summary(pl.UTF-8):	Kod współdzielony przez pakiety mate-panel, mate-session, mate-file-manager itd.
 Name:		mate-desktop
-Version:	1.14.1
+Version:	1.16.0
 Release:	1
 License:	LGPL v2+ with MIT parts (library), GPL v2+ (mate-about)
 Group:		X11/Applications
-Source0:	http://pub.mate-desktop.org/releases/1.14/%{name}-%{version}.tar.xz
-# Source0-md5:	3d8d55e228b4ab82cf33004e314820e0
+Source0:	http://pub.mate-desktop.org/releases/1.16/%{name}-%{version}.tar.xz
+# Source0-md5:	2dedbee701c9d471cfe8a633654044ce
 URL:		http://wiki.mate-desktop.org/mate-desktop
 BuildRequires:	autoconf >= 2.50
 BuildRequires:	automake >= 1:1.9
@@ -147,8 +147,8 @@ desktop-file-install \
 	--dir=$RPM_BUILD_ROOT%{_desktopdir} \
 	$RPM_BUILD_ROOT%{_desktopdir}/mate-about.desktop
 
-# es_419 is bogus name, frp,jv,ku_IQ,nah,nqo,sco not supported yet by glibc, ur_PK is empty version of ur
-%{__rm} -r $RPM_BUILD_ROOT%{_localedir}/{es_419,frp,jv,ku_IQ,nah,nqo,sco,ur_PK}
+# frp,jv,ku_IQ not supported yet by glibc
+%{__rm} -r $RPM_BUILD_ROOT%{_localedir}/{frp,jv,ku_IQ}
 
 %find_lang %{name} --with-mate
 
@@ -168,7 +168,7 @@ rm -rf $RPM_BUILD_ROOT
 
 %files -f %{name}.lang
 %defattr(644,root,root,755)
-%doc AUTHORS ChangeLog MAINTAINERS NEWS README
+%doc AUTHORS ChangeLog NEWS README
 %attr(755,root,root) %{_bindir}/mate-about
 %attr(755,root,root) %{_bindir}/mate-color-select
 %attr(755,root,root) %{_bindir}/mpaste
