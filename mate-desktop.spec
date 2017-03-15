@@ -1,17 +1,16 @@
 #
 # Conditional build:
 %bcond_without	apidocs		# disable gtk-doc
-%bcond_with	gtk3		# use GTK+ 3.x instead of GTK+ 2.x
 
 Summary:	Shared code for mate-panel, mate-session, mate-file-manager, etc.
 Summary(pl.UTF-8):	Kod współdzielony przez pakiety mate-panel, mate-session, mate-file-manager itd.
 Name:		mate-desktop
-Version:	1.16.1
+Version:	1.18.0
 Release:	1
 License:	LGPL v2+ with MIT parts (library), GPL v2+ (mate-about)
 Group:		X11/Applications
-Source0:	http://pub.mate-desktop.org/releases/1.16/%{name}-%{version}.tar.xz
-# Source0-md5:	b761537dd66ac486dc359ce681853060
+Source0:	http://pub.mate-desktop.org/releases/1.18/%{name}-%{version}.tar.xz
+# Source0-md5:	3252cd41ec927805398bc812841215fd
 URL:		http://wiki.mate-desktop.org/mate-desktop
 BuildRequires:	autoconf >= 2.50
 BuildRequires:	automake >= 1:1.9
@@ -22,13 +21,10 @@ BuildRequires:	gdk-pixbuf2-devel >= 2.4.0
 BuildRequires:	gettext-tools
 BuildRequires:	glib2-devel >= 1:2.36.0
 BuildRequires:	gobject-introspection-devel >= 0.9.7
-%{!?with_gtk3:BuildRequires:	gtk+2-devel >= 2:2.24.0}
-%{?with_gtk3:BuildRequires:	gtk+3-devel >= 3.0.0}
+BuildRequires:	gtk+3-devel >= 3.14
 BuildRequires:	gtk-doc >= 1.4
 BuildRequires:	intltool >= 0.50.1
 BuildRequires:	libtool
-%{!?with_gtk3:BuildRequires:	libunique-devel >= 1.0}
-%{?with_gtk3:BuildRequires:	libunique3-devel >= 3.0}
 BuildRequires:	mate-common
 BuildRequires:	pkgconfig
 BuildRequires:	rpmbuild(find_lang) >= 1.36
@@ -65,8 +61,7 @@ Group:		Libraries
 Requires:	dconf >= 0.13.4
 Requires:	gdk-pixbuf2 >= 2.4.0
 Requires:	glib2 >= 1:2.36.0
-%{!?with_gtk3:Requires:	gtk+2 >= 2:2.24.0}
-%{?with_gtk3:Requires:	gtk+3 >= 3.0.0}
+Requires:	gtk+3 >= 3.14
 Requires:	startup-notification >= 0.5
 Requires:	xorg-lib-libXrandr >= 1.3
 
@@ -85,8 +80,7 @@ Requires:	%{name}-libs = %{version}-%{release}
 Requires:	dconf-devel >= 0.13.4
 Requires:	gdk-pixbuf2-devel >= 2.4.0
 Requires:	glib2-devel >= 1:2.36.0
-%{!?with_gtk3:Requires:	gtk+2-devel >= 2:2.24.0}
-%{?with_gtk3:Requires:	gtk+3-devel >= 3.0.0}
+Requires:	gtk+3-devel >= 3.14
 Requires:	startup-notification-devel >= 0.5
 
 %description devel
@@ -127,8 +121,6 @@ Dokumentacja API mate-desktop.
 	--disable-silent-rules \
 	--disable-static \
 	--enable-unique \
-	--enable-mpaste \
-	%{?with_gtk3:--with-gtk=3.0} \
 	--with-pnp-ids-path=/lib/hwdata/pnp.ids
 
 %{__make}
@@ -171,10 +163,8 @@ rm -rf $RPM_BUILD_ROOT
 %doc AUTHORS ChangeLog NEWS README
 %attr(755,root,root) %{_bindir}/mate-about
 %attr(755,root,root) %{_bindir}/mate-color-select
-%attr(755,root,root) %{_bindir}/mpaste
 %{_mandir}/man1/mate-about.1*
 %{_mandir}/man1/mate-color-select.1*
-%{_mandir}/man1/mpaste.1*
 %{_desktopdir}/mate-about.desktop
 %{_desktopdir}/mate-color-select.desktop
 %{_iconsdir}/hicolor/*/apps/mate.png
