@@ -5,12 +5,12 @@
 Summary:	Shared code for mate-panel, mate-session, mate-file-manager, etc.
 Summary(pl.UTF-8):	Kod współdzielony przez pakiety mate-panel, mate-session, mate-file-manager itd.
 Name:		mate-desktop
-Version:	1.18.0
+Version:	1.20.0
 Release:	1
 License:	LGPL v2+ with MIT parts (library), GPL v2+ (mate-about)
 Group:		X11/Applications
-Source0:	http://pub.mate-desktop.org/releases/1.18/%{name}-%{version}.tar.xz
-# Source0-md5:	3252cd41ec927805398bc812841215fd
+Source0:	http://pub.mate-desktop.org/releases/1.20/%{name}-%{version}.tar.xz
+# Source0-md5:	ff3e9bac4757e48757a10012d8e659a2
 URL:		http://wiki.mate-desktop.org/mate-desktop
 BuildRequires:	autoconf >= 2.50
 BuildRequires:	automake >= 1:1.9
@@ -19,9 +19,9 @@ BuildRequires:	desktop-file-utils
 BuildRequires:	docbook-dtd412-xml
 BuildRequires:	gdk-pixbuf2-devel >= 2.4.0
 BuildRequires:	gettext-tools
-BuildRequires:	glib2-devel >= 1:2.36.0
+BuildRequires:	glib2-devel >= 1:2.50.0
 BuildRequires:	gobject-introspection-devel >= 0.9.7
-BuildRequires:	gtk+3-devel >= 3.14
+BuildRequires:	gtk+3-devel >= 3.22
 BuildRequires:	gtk-doc >= 1.4
 BuildRequires:	intltool >= 0.50.1
 BuildRequires:	libtool
@@ -60,8 +60,8 @@ License:	LGPL v2+
 Group:		Libraries
 Requires:	dconf >= 0.13.4
 Requires:	gdk-pixbuf2 >= 2.4.0
-Requires:	glib2 >= 1:2.36.0
-Requires:	gtk+3 >= 3.14
+Requires:	glib2 >= 1:2.50.0
+Requires:	gtk+3 >= 3.22
 Requires:	startup-notification >= 0.5
 Requires:	xorg-lib-libXrandr >= 1.3
 
@@ -79,8 +79,8 @@ Group:		Development/Libraries
 Requires:	%{name}-libs = %{version}-%{release}
 Requires:	dconf-devel >= 0.13.4
 Requires:	gdk-pixbuf2-devel >= 2.4.0
-Requires:	glib2-devel >= 1:2.36.0
-Requires:	gtk+3-devel >= 3.14
+Requires:	glib2-devel >= 1:2.50.0
+Requires:	gtk+3-devel >= 3.22
 Requires:	startup-notification-devel >= 0.5
 
 %description devel
@@ -120,7 +120,6 @@ Dokumentacja API mate-desktop.
 	--disable-schemas-compile \
 	--disable-silent-rules \
 	--disable-static \
-	--enable-unique \
 	--with-pnp-ids-path=/lib/hwdata/pnp.ids
 
 %{__make}
