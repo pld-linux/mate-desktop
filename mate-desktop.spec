@@ -5,12 +5,12 @@
 Summary:	Shared code for mate-panel, mate-session, mate-file-manager, etc.
 Summary(pl.UTF-8):	Kod współdzielony przez pakiety mate-panel, mate-session, mate-file-manager itd.
 Name:		mate-desktop
-Version:	1.22.1
+Version:	1.22.2
 Release:	1
 License:	LGPL v2+ with MIT parts (library), GPL v2+ (mate-about)
 Group:		X11/Applications
 Source0:	http://pub.mate-desktop.org/releases/1.22/%{name}-%{version}.tar.xz
-# Source0-md5:	1232abca80bcb94095ff1d9db623325b
+# Source0-md5:	9392f7099feb08b31b3d52573716d8cc
 URL:		http://wiki.mate-desktop.org/mate-desktop
 BuildRequires:	autoconf >= 2.50
 BuildRequires:	automake >= 1:1.9
@@ -139,7 +139,7 @@ desktop-file-install \
 	$RPM_BUILD_ROOT%{_desktopdir}/mate-about.desktop
 
 # frp,jv,ku_IQ not supported yet by glibc
-%{__rm} -r $RPM_BUILD_ROOT%{_localedir}/{frp,jv,ku_IQ}
+%{__rm} -r $RPM_BUILD_ROOT%{_localedir}/{frp,ie,jv,ku_IQ}
 
 %find_lang %{name} --with-mate
 
