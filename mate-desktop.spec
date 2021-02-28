@@ -95,9 +95,7 @@ Summary:	mate-desktop API documentation
 Summary(pl.UTF-8):	Dokumentacja API mate-desktop
 Group:		Documentation
 Requires:	gtk-doc-common
-%if "%{_rpmversion}" >= "5"
 BuildArch:	noarch
-%endif
 
 %description apidocs
 mate-desktop API documentation.
