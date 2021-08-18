@@ -5,12 +5,12 @@
 Summary:	Shared code for mate-panel, mate-session, mate-file-manager, etc.
 Summary(pl.UTF-8):	Kod współdzielony przez pakiety mate-panel, mate-session, mate-file-manager itd.
 Name:		mate-desktop
-Version:	1.24.1
+Version:	1.26.0
 Release:	1
 License:	LGPL v2+ with MIT parts (library), GPL v2+ (mate-about)
 Group:		X11/Applications
-Source0:	http://pub.mate-desktop.org/releases/1.24/%{name}-%{version}.tar.xz
-# Source0-md5:	06e221597f3e1acd94775d7ede3807aa
+Source0:	https://pub.mate-desktop.org/releases/1.26/%{name}-%{version}.tar.xz
+# Source0-md5:	439cd9292351e0ce75f0c69f322a3704
 URL:		http://wiki.mate-desktop.org/mate-desktop
 BuildRequires:	autoconf >= 2.50
 BuildRequires:	automake >= 1:1.9
@@ -19,7 +19,7 @@ BuildRequires:	desktop-file-utils
 BuildRequires:	docbook-dtd412-xml
 BuildRequires:	gdk-pixbuf2-devel >= 2.36.5
 BuildRequires:	gettext-tools >= 0.19.8
-BuildRequires:	glib2-devel >= 1:2.50.0
+BuildRequires:	glib2-devel >= 1:2.68.0
 BuildRequires:	gobject-introspection-devel >= 0.9.7
 BuildRequires:	gtk+3-devel >= 3.22
 BuildRequires:	gtk-doc >= 1.4
@@ -60,7 +60,7 @@ License:	LGPL v2+
 Group:		Libraries
 Requires:	dconf >= 0.13.4
 Requires:	gdk-pixbuf2 >= 2.36.5
-Requires:	glib2 >= 1:2.50.0
+Requires:	glib2 >= 1:2.68.0
 Requires:	gtk+3 >= 3.22
 Requires:	startup-notification >= 0.5
 Requires:	xorg-lib-libXrandr >= 1.3
@@ -79,7 +79,7 @@ Group:		Development/Libraries
 Requires:	%{name}-libs = %{version}-%{release}
 Requires:	dconf-devel >= 0.13.4
 Requires:	gdk-pixbuf2-devel >= 2.36.5
-Requires:	glib2-devel >= 1:2.50.0
+Requires:	glib2-devel >= 1:2.68.0
 Requires:	gtk+3-devel >= 3.22
 Requires:	startup-notification-devel >= 0.5
 
