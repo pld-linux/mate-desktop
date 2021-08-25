@@ -11,7 +11,7 @@ License:	LGPL v2+ with MIT parts (library), GPL v2+ (mate-about)
 Group:		X11/Applications
 Source0:	https://pub.mate-desktop.org/releases/1.26/%{name}-%{version}.tar.xz
 # Source0-md5:	439cd9292351e0ce75f0c69f322a3704
-URL:		http://wiki.mate-desktop.org/mate-desktop
+URL:		https://wiki.mate-desktop.org/mate-desktop/components/mate-desktop/
 BuildRequires:	autoconf >= 2.50
 BuildRequires:	automake >= 1:1.9
 BuildRequires:	dconf-devel >= 0.13.4
