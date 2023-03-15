@@ -28,6 +28,7 @@ BuildRequires:	iso-codes
 BuildRequires:	libtool
 BuildRequires:	mate-common
 BuildRequires:	pkgconfig
+BuildRequires:	rpm-build >= 4.6
 BuildRequires:	rpmbuild(find_lang) >= 1.36
 BuildRequires:	startup-notification-devel >= 0.5
 BuildRequires:	tar >= 1:1.22
