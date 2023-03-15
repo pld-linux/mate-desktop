@@ -24,6 +24,7 @@ BuildRequires:	gobject-introspection-devel >= 0.9.7
 BuildRequires:	gtk+3-devel >= 3.22
 BuildRequires:	gtk-doc >= 1.4
 BuildRequires:	intltool >= 0.50.1
+BuildRequires:	iso-codes
 BuildRequires:	libtool
 BuildRequires:	mate-common
 BuildRequires:	pkgconfig
