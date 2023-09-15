@@ -36,6 +36,7 @@ BuildRequires:	xorg-lib-libX11-devel
 BuildRequires:	xorg-lib-libXrandr-devel >= 1.3
 BuildRequires:	xz
 BuildRequires:	yelp-tools
+Requires(post,postun):	desktop-file-utils
 Requires(post,postun):	gtk-update-icon-cache
 Requires(post,postun):	hicolor-icon-theme
 Requires:	%{name}-libs = %{version}-%{release}
@@ -149,10 +150,12 @@ rm -rf $RPM_BUILD_ROOT
 %post
 %glib_compile_schemas
 %update_icon_cache hicolor
+%update_desktop_database_post
 
 %postun
 %glib_compile_schemas
 %update_icon_cache hicolor
+%update_desktop_database_postun
 
 %post	libs -p /sbin/ldconfig
 %postun	libs -p /sbin/ldconfig
