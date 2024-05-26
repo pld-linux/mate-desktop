@@ -1,16 +1,16 @@
 #
 # Conditional build:
-%bcond_without	apidocs		# disable gtk-doc
+%bcond_without	apidocs		# gtk-doc API documentation
 
 Summary:	Shared code for mate-panel, mate-session, mate-file-manager, etc.
 Summary(pl.UTF-8):	Kod współdzielony przez pakiety mate-panel, mate-session, mate-file-manager itd.
 Name:		mate-desktop
-Version:	1.26.2
+Version:	1.28.2
 Release:	1
 License:	LGPL v2+ with MIT parts (library), GPL v2+ (mate-about)
 Group:		X11/Applications
-Source0:	https://pub.mate-desktop.org/releases/1.26/%{name}-%{version}.tar.xz
-# Source0-md5:	894f0e9d88a131d12fa5bc39cfc64eb9
+Source0:	https://pub.mate-desktop.org/releases/1.28/%{name}-%{version}.tar.xz
+# Source0-md5:	3427bf8e49e4b5a91a41eba37aae3638
 URL:		https://wiki.mate-desktop.org/mate-desktop/components/mate-desktop/
 BuildRequires:	autoconf >= 2.50
 BuildRequires:	automake >= 1:1.9
